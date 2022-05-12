@@ -1,8 +1,14 @@
 setopt auto_cd
 
 # JAVA HOME EXPORTS
+export ANDROID_TOOLS=/home/moraski/Android/Sdk/platform-tools
 export JAVA_HOME=/home/moraski/dev/jdk1.8.0_291
-export PATH=$PATH:$JAVA_HOME/bin	
+export MAVEN_HOME=/home/moraski/dev/apache-maven-3.8.1
+export MAVEN_REPO_SERVER=local
+export MAVEN_REPO_URL=http://localhost:8080/manager/text
+export MAVEN_REPO_USER=dev
+export MAVEN_REPO_PASS=dev
+export PATH=$PATH:$ANDROID_TOOLS:$JAVA_HOME/bin:$MAVEN_HOME/bin
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -36,10 +42,6 @@ plugins=(git zsh-autosuggestions docker oc kubectl mvn ansible yarn-completion)
 # Seems to not work: pip yarn docker-compose npm npx
 
 source $ZSH/oh-my-zsh.sh
-neofetch
-
-
-
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -100,6 +102,25 @@ neofetch
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# Functions alias
+previsao(){
+    if [ -z "$1"];
+        then
+            curl https://wttr.in/Campo%20Mour%C3%A3o
+        else 
+            curl https://wttr.in/$1
+    fi
+}
+
+meet(){
+    if [ "$(date '+%A')" = "sexta" ] ; then
+        google-chrome-stable --new-window 'https://meet.google.com/cba-kiat-hvn?authuser=1'
+    else
+        google-chrome-stable --new-window 'https://meet.google.com/yxj-yukm-mky?authuser=1'
+    fi
+}
+
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -117,8 +138,16 @@ alias lcllaravel="chrome http://localhost:8000"
 alias lclonsafety="chrome http://localhost:8080"
 alias speedtest="speedtest-cli"
 alias rmb="rm ~/.zsh_history | rm ~/.mysql_history | rm ~/.bash_history"
-alias compress='tar -czvf'
-alias decompress='tar -xzvf'
+alias rmm="rm -rfd"
+alias mysql="mysql -u root -proot"
+alias mysqlmob="mysql -u root -proot moblean"
+alias compress='tar -czvf ' # Nome e o arquivo a ser compactado
+alias decompress='tar -xzvf ' # Nome do arquivo para decompress
+alias adb='/home/moraski/Android/Sdk/platform-tools/./adb'
+alias snake='ruben-snake-cmd'
+alias ports='sudo lsof -i -P -n'
+alias facul='cd /home/moraski/faculdade/'
+alias lampada='cd /home/moraski/dev/util/yeelight/ && source .venv/bin/activate && python3 main.py'
 
 # Completion for the d2s python client: https://pypi.org/project/d2s/
 #eval "$(_D2S_COMPLETE=source_zsh d2s)"
