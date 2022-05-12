@@ -117,8 +117,8 @@ alias lcllaravel="chrome http://localhost:8000"
 alias lclonsafety="chrome http://localhost:8080"
 alias speedtest="speedtest-cli"
 alias rmb="rm ~/.zsh_history | rm ~/.mysql_history | rm ~/.bash_history"
-alias compress='tar -cvJ'
-alias decompress='tar -xJ'
+alias compress='tar -czvf'
+alias decompress='tar -xzvf'
 
 # Completion for the d2s python client: https://pypi.org/project/d2s/
 #eval "$(_D2S_COMPLETE=source_zsh d2s)"
